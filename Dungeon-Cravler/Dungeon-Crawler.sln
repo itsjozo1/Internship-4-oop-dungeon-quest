@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Presentation", "Library.Presentation\Library.Presentation.csproj", "{F982EDFF-787B-4DE1-B6B1-71AD85111B91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Domain", "Library.Domain\Library.Domain.csproj", "{816F4BAD-C515-4F3F-A49B-954970AABC39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Data", "Library.Data\Library.Data.csproj", "{051D2EB0-577B-4D76-85F8-244B0C1A94E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F982EDFF-787B-4DE1-B6B1-71AD85111B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F982EDFF-787B-4DE1-B6B1-71AD85111B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F982EDFF-787B-4DE1-B6B1-71AD85111B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F982EDFF-787B-4DE1-B6B1-71AD85111B91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{816F4BAD-C515-4F3F-A49B-954970AABC39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{816F4BAD-C515-4F3F-A49B-954970AABC39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{816F4BAD-C515-4F3F-A49B-954970AABC39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{816F4BAD-C515-4F3F-A49B-954970AABC39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{051D2EB0-577B-4D76-85F8-244B0C1A94E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{051D2EB0-577B-4D76-85F8-244B0C1A94E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{051D2EB0-577B-4D76-85F8-244B0C1A94E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{051D2EB0-577B-4D76-85F8-244B0C1A94E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

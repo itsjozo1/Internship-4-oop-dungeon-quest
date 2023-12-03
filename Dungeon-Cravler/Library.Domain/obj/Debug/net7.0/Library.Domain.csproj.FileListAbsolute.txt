@@ -1,0 +1,15 @@
+/Users/rokoperisic/RiderProjects/Dungeon-Cravler/Library.Domain/bin/Debug/net7.0/Library.Domain.deps.json
+/Users/rokoperisic/RiderProjects/Dungeon-Cravler/Library.Domain/bin/Debug/net7.0/Library.Domain.dll
+/Users/rokoperisic/RiderProjects/Dungeon-Cravler/Library.Domain/bin/Debug/net7.0/Library.Domain.pdb
+/Users/rokoperisic/RiderProjects/Dungeon-Cravler/Library.Domain/bin/Debug/net7.0/Library.Data.dll
+/Users/rokoperisic/RiderProjects/Dungeon-Cravler/Library.Domain/bin/Debug/net7.0/Library.Data.pdb
+/Users/rokoperisic/RiderProjects/Dungeon-Cravler/Library.Domain/obj/Debug/net7.0/Library.Domain.csproj.AssemblyReference.cache
+/Users/rokoperisic/RiderProjects/Dungeon-Cravler/Library.Domain/obj/Debug/net7.0/Library.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rokoperisic/RiderProjects/Dungeon-Cravler/Library.Domain/obj/Debug/net7.0/Library.Domain.AssemblyInfoInputs.cache
+/Users/rokoperisic/RiderProjects/Dungeon-Cravler/Library.Domain/obj/Debug/net7.0/Library.Domain.AssemblyInfo.cs
+/Users/rokoperisic/RiderProjects/Dungeon-Cravler/Library.Domain/obj/Debug/net7.0/Library.Domain.csproj.CoreCompileInputs.cache
+/Users/rokoperisic/RiderProjects/Dungeon-Cravler/Library.Domain/obj/Debug/net7.0/Library.Domain.csproj.CopyComplete
+/Users/rokoperisic/RiderProjects/Dungeon-Cravler/Library.Domain/obj/Debug/net7.0/Library.Domain.dll
+/Users/rokoperisic/RiderProjects/Dungeon-Cravler/Library.Domain/obj/Debug/net7.0/refint/Library.Domain.dll
+/Users/rokoperisic/RiderProjects/Dungeon-Cravler/Library.Domain/obj/Debug/net7.0/Library.Domain.pdb
+/Users/rokoperisic/RiderProjects/Dungeon-Cravler/Library.Domain/obj/Debug/net7.0/ref/Library.Domain.dll
