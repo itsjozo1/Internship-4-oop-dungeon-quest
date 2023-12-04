@@ -2,20 +2,23 @@
 using Library.Domain.Heroes;
 
 List<Enemy> enemiesList = new List<Enemy>();
-for (int i = 0; i < 10; i++)
+void CreateNewEnemiesList(List<Enemy> enemiesList)
 {
-    var rand = GenerateRandomEnemy();
-    switch (rand)
+    for (int i = 0; i < 10; i++)
     {
-        case 1:
-            enemiesList.Add(new Goblin());
-            break;
-        case 2:
-            enemiesList.Add(new Brute());
-            break;
-        case 3:
-            enemiesList.Add(new Witch());
-            break;
+        var rand = GenerateRandomEnemy();
+        switch (rand)
+        {
+            case 1:
+                enemiesList.Add(new Goblin());
+                break;
+            case 2:
+                enemiesList.Add(new Brute());
+                break;
+            case 3:
+                enemiesList.Add(new Witch());
+                break;
+        }
     }
 }
 
@@ -29,6 +32,8 @@ Dictionary<string, Action> heroesCreationList = new Dictionary<string, Action>()
 
 while (true)
 {
+   enemiesList.Clear();
+    CreateNewEnemiesList(enemiesList);
     Console.Clear();
     PrintTitle();
     Continue();
@@ -172,7 +177,7 @@ double FightIndividualEnemy(Hero hero, Enemy enemy, double heroCurrentHealth)
     do
     {
         var enemyCommand = "";
-        int roundResult = DetermineRoundWinner(hero.HeroAttack(ref heroCurrentHealth), enemyCommand = enemy.EnemyAttack());
+        int roundResult = DetermineRoundWinner(hero.HeroAttack(ref heroCurrentHealth), enemyCommand = enemy.EnemyAttack(hero, enemiesList));
         switch (roundResult)
         {
             case 1:
@@ -200,6 +205,7 @@ double FightIndividualEnemy(Hero hero, Enemy enemy, double heroCurrentHealth)
                 break;
         }
         heroCurrentHealth= hero.CheckAbility(heroCurrentHealth);
+        enemy.CheckAbilities(enemyCurrentHealth, enemiesList);
     } while (heroCurrentHealth > 0  && enemyCurrentHealth > 0);
     return heroCurrentHealth;
 }

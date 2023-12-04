@@ -5,7 +5,7 @@ public class Goblin : Enemy
     public override double Health { get; set; } = 40;
     public override int Damage { get; set; }= 10;
     public override int ExperiencePoints { get; set; }= 10;
-    public static int Chance = 70;
+    public static int Chance = 50;
     
     
     public override void DisplayEnemy(double currentHealth)

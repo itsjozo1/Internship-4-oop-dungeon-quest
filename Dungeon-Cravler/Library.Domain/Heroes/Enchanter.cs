@@ -74,7 +74,7 @@ public class Enchanter : Hero
             {
                 currentHealth *= 1.2;
                 currentMana -= 10;
-                Console.WriteLine($"Enchanter has regained 20% health points.");
+                Console.WriteLine("Enchanter has regained 20% health points.");
             }
             else
             {

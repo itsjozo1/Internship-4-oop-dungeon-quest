@@ -4,7 +4,7 @@ public class Brute : Enemy
 {
     public override double Health { get; set; } = 80;
     public override int Damage { get; set; } = 15;
-    public override int ExperiencePoints { get; set; }= 20;
+    public override int ExperiencePoints { get; set; }= 30;
     public static int Chance = 20;
     public double DamagePercent;
     

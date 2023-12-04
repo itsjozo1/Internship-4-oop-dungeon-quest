@@ -7,7 +7,8 @@ public class Witch : Enemy
     public override double Health { get; set; } = 70;
     public override int Damage { get; set; }= 20;
     public override int ExperiencePoints { get; set; }= 50;
-    public static int Chance = 10;
+    public static int Chance = 20;
+    private int dumbusChance = 10;
 
     
     public override void DisplayEnemy(double currentHealth)
@@ -18,20 +19,33 @@ public class Witch : Enemy
         
     }
 
-    public void SpawnEnemiesAfterDeath()
+    public override void CheckAbilities(double currentHealth, List<Enemy> enemiesList)
     {
-        
+        if (currentHealth <= 0)
+        {
+            Console.WriteLine("Witch have spawned 2 enemies");
+            Console.ReadLine();
+            enemiesList.Add(new Goblin());  
+            enemiesList.Add(new Goblin());  
+        }
     }
-    public void Dumbus(Hero dumbusHero, List<Enemy> enemiesList)
+    public override string EnemyAttack(Hero dumbusHero, List<Enemy> enemiesList)
     {
         Random random = new Random();
-        dumbusHero.Health = random.Next(1, 101);
-        foreach (var enemy in enemiesList)
+        if (random.Next(1, 100) < dumbusChance)
         {
-            if (enemy.Health > 0)
+            Console.Clear();
+            Console.WriteLine("Đumbus has been activated, every health levels are changed!");
+            Console.ReadLine();
+            dumbusHero.Health = random.Next(1, (int)dumbusHero.Health);
+            foreach (var enemy in enemiesList)
             {
-                enemy.Health = random.Next(1, 101);
+                if (enemy.Health > 0)
+                {
+                    enemy.Health = random.Next(1, (int)enemy.Health);
+                }
             }
         }
+        return attackCommands[random.Next(1,4)-1];
     }
 }
