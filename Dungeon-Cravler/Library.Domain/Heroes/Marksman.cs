@@ -12,7 +12,7 @@ public class Marksman : Hero
 
     public Marksman(string name)
     {
-        this.Name = name;
+        Name = name;
     }
     public override string Description()
     {
@@ -56,8 +56,20 @@ public class Marksman : Hero
     {
         Damage = _initialDamage;
         Console.WriteLine("     _O_    (\n    /(#) = /\n     /_\\\n     | |");
-        DisplayHealthBar(currentHealth, Health);
+        DisplayBar(currentHealth, Health, "Health");
         Console.WriteLine($"Damage: {Damage}");
         base.DisplayHero(currentHealth);
+    }
+    public override void AddExp(int enemyExp)
+    {
+        ExpiriencePoints += enemyExp;
+        if (ExpiriencePoints >= 100)
+        {
+            ExpiriencePoints -= 100;
+            Damage += 5;
+            Health += 10;
+            stunChance += 5;
+            criticalChance += 5;
+        }
     }
 }

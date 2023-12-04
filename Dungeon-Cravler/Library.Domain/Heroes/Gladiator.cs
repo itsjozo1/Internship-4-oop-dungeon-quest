@@ -19,7 +19,7 @@ public class Gladiator : Hero
             Damage *= 2;
             Console.WriteLine($"**RAGE MODE ACTIVATED**\nDamage - {Damage}");
             currentHealth *= 0.85;
-            DisplayHealthBar(currentHealth, Health);
+            DisplayBar(currentHealth, Health, "Health");
             return HeroAttack(ref currentHealth);
 
         }
@@ -60,7 +60,7 @@ public class Gladiator : Hero
     {
         Damage = _initialDamage;
         Console.WriteLine("    _O_  D\n   / V \\_|\n    /_\\ \n    |#|");
-        DisplayHealthBar(currentHealth, Health);
+        DisplayBar(currentHealth, Health, "Health");
         Console.WriteLine($"Damage: {Damage}");
         base.DisplayHero(currentHealth);
     }

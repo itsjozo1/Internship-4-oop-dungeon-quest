@@ -2,25 +2,6 @@
 using Library.Domain.Heroes;
 
 List<Enemy> enemiesList = new List<Enemy>();
-void CreateNewEnemiesList(List<Enemy> enemiesList)
-{
-    for (int i = 0; i < 10; i++)
-    {
-        var rand = GenerateRandomEnemy();
-        switch (rand)
-        {
-            case 1:
-                enemiesList.Add(new Goblin());
-                break;
-            case 2:
-                enemiesList.Add(new Brute());
-                break;
-            case 3:
-                enemiesList.Add(new Witch());
-                break;
-        }
-    }
-}
 
 Dictionary<string, Action> heroesCreationList = new Dictionary<string, Action>()
 {
@@ -39,7 +20,7 @@ while (true)
     Continue();
     Console.WriteLine("Welcome to Dungeon-Crawler\nChoose your hero:");
     PrintSelection();
-    var selectedHero = SelectHero(Console.ReadLine());
+    var selectedHero = SelectHero(Console.ReadLine().ToLower().Trim());
     foreach (var item in heroesCreationList)
     {
         if (item.Key == selectedHero)
@@ -58,12 +39,12 @@ while (true)
 string SelectHero(string selectHero)
 {
 
-    while (!heroesCreationList.Keys.Contains(selectHero.ToLower()))
+    while (!heroesCreationList.Keys.Contains(selectHero))
     {
         Console.Clear();
         Console.WriteLine("Choose existing heroes!");
         PrintSelection();
-        selectHero = Console.ReadLine();
+        selectHero = Console.ReadLine().ToLower().Trim();
     }
     return selectHero;
 }
@@ -160,6 +141,25 @@ void StartGame(Hero newHero)
     }
     Console.WriteLine("Congratulations you have successfully slaughtered whole dungeon!!\n");
 }
+void CreateNewEnemiesList(List<Enemy> enemiesList)
+{
+    for (int i = 0; i < 10; i++)
+    {
+        var rand = GenerateRandomEnemy();
+        switch (rand)
+        {
+            case 1:
+                enemiesList.Add(new Goblin());
+                break;
+            case 2:
+                enemiesList.Add(new Brute());
+                break;
+            case 3:
+                enemiesList.Add(new Witch());
+                break;
+        }
+    }
+}
 
 void Continue()
 {
@@ -189,7 +189,7 @@ double FightIndividualEnemy(Hero hero, Enemy enemy, double heroCurrentHealth)
                 break;
             case 0:
                 Console.Clear();
-                heroCurrentHealth -= enemy.Damage;
+                heroCurrentHealth = DealDamage(heroCurrentHealth, enemy.Damage);
                 Console.WriteLine($"Enemy choice {enemyCommand}");
                 enemy.DisplayEnemy(enemyCurrentHealth);
                 Console.WriteLine($"\nEnemy wins, Hero loses {enemy.Damage} life\n");
@@ -197,7 +197,7 @@ double FightIndividualEnemy(Hero hero, Enemy enemy, double heroCurrentHealth)
                 break;
             case 2:
                 Console.Clear();
-                enemyCurrentHealth -= hero.Damage;
+                enemyCurrentHealth = DealDamage(enemyCurrentHealth, hero.Damage);
                 Console.WriteLine($"Enemy choice {enemyCommand}");
                 enemy.DisplayEnemy(enemyCurrentHealth);
                 Console.WriteLine($"\nHero wins, enemy loses {hero.Damage} life\n");
@@ -227,14 +227,25 @@ int DetermineRoundWinner(string heroCommand, string enemyCommand)
 
 bool Confirm()
 {
-    var enterConfirm = Console.ReadLine();
+    var enterConfirm = Console.ReadLine().ToLower().Trim();
     while (!enterConfirm.ToLower().Equals("y") && !enterConfirm.ToLower().Equals("n"))
     {
         Console.WriteLine("Enter y/n");
-        enterConfirm = Console.ReadLine();
+        enterConfirm = Console.ReadLine().ToLower().Trim();
     }
 
-    if (enterConfirm.ToLower().Equals("y")) return true;
+    if (enterConfirm.Equals("y")) return true;
 
     return false;
+}
+
+double DealDamage(double currentHealth, double damage)
+{
+    if (damage > currentHealth)
+    {
+        currentHealth = 0;
+        return currentHealth;
+    }
+    currentHealth -= damage;
+    return currentHealth;
 }

@@ -5,7 +5,7 @@ namespace Library.Domain.Enemies;
 public class Witch : Enemy
 {
     public override double Health { get; set; } = 70;
-    public override int Damage { get; set; }= 20;
+    public override double Damage { get; set; } = 20;
     public override int ExperiencePoints { get; set; }= 50;
     public static int Chance = 20;
     private int dumbusChance = 10;
@@ -14,7 +14,7 @@ public class Witch : Enemy
     public override void DisplayEnemy(double currentHealth)
     {
         Console.WriteLine("          0\n     _O_  |\n    _/#\\_/|\n     |#|  |\n     /##\\");
-        DisplayHealthBar(currentHealth, Health);
+        DisplayBar(currentHealth, Health, "Health");
         Console.WriteLine($"Damage: {Damage}");
         
     }
@@ -37,13 +37,10 @@ public class Witch : Enemy
             Console.Clear();
             Console.WriteLine("Đumbus has been activated, every health levels are changed!");
             Console.ReadLine();
-            dumbusHero.Health = random.Next(1, (int)dumbusHero.Health);
+            dumbusHero.Health = random.Next(1, 100);
             foreach (var enemy in enemiesList)
             {
-                if (enemy.Health > 0)
-                {
-                    enemy.Health = random.Next(1, (int)enemy.Health);
-                }
+                enemy.Health = random.Next(1, 100);
             }
         }
         return attackCommands[random.Next(1,4)-1];

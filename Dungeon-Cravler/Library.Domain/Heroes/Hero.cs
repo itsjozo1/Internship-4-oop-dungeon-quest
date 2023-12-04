@@ -20,7 +20,7 @@ public class Hero : CharacterFunctions
     }
     public virtual void DisplayHero(double currentHealth)
     {
-        DisplayExperiencePoints(ExpiriencePoints);
+        DisplayBar(ExpiriencePoints, 100, "EXP");
     }
 
     public virtual string HeroAttack(ref double currentHealth)

@@ -5,8 +5,8 @@ public class Enchanter : Hero
     public string Name {get;}
     public override double Health { get; set; } = 50;
     public override int Damage { get; set; } = 30;
-    private int mana = 50;
-    public int currentMana = 50;
+    private int mana = 70;
+    public int currentMana = 70;
     private int relive = 1;
 
     public Enchanter(string name)
@@ -38,10 +38,11 @@ public class Enchanter : Hero
     {
         string desc =  $"\nHello {Name} before you start adventure in dark dungeon let me introduce you with Enchanter.\n" +
                        $"  ___ k\n   O  |\n ()Y==o\n  /_\\ |\n  _W_ |" +
-                       $"\nEnchanter have {Health} health points and {Damage} damage rate.Enchanter also have 50 mana.\n" +
+                       $"\nEnchanter have {Health} health points and {Damage} damage rate.Enchanter also have {mana} mana.\n" +
                        $"Mana is magical strength that enchanter uses to attack. If mana is 0 you cant attack\n" +
                        $"that round,you will need to wait until it recharges next roundEnchanter have ability to \n" +
-                       $"relive once in game, after he dies automatically relives back. " +
+                       $"relive once in game, after he dies automatically relives back. Enchanter has function 'regenerate\n" +
+                       $"which revives 20% of health for 10 mana points" +
                        $"\n\nFight with each of ten enemies with attack commands 'direct', 'side' and 'counter'. Fight rules\n" +
                        $"are simple:\nDirect beats side attack\nSide beats counter attack\nCounter " +
                        $"beats direct attack\nIn case of draw nothing happens.\n";
@@ -50,9 +51,9 @@ public class Enchanter : Hero
     public override void DisplayHero(double currentHealth)
     {
         Console.WriteLine("     ___ k\n      O  |\n    ()Y==o\n     /_\\ |\n     _W_ |");
-        DisplayHealthBar(currentHealth, Health);
+        DisplayBar(currentHealth, Health, "Health");
         Console.WriteLine($"Damage: {Damage}");
-        DisplayManaBar(currentMana, mana);
+        DisplayBar(currentMana, mana, "Mana");
         base.DisplayHero(currentHealth);
     }
 
@@ -72,7 +73,7 @@ public class Enchanter : Hero
         {
             if (currentMana >= 10 && currentHealth<=0.8*Health)
             {
-                currentHealth *= 1.2;
+                currentHealth = Math.Round(currentHealth * 1.2);
                 currentMana -= 10;
                 Console.WriteLine("Enchanter has regained 20% health points.");
             }

@@ -5,13 +5,10 @@ namespace Library.Domain.Enemies;
 public class Enemy : CharacterFunctions
 {
     public virtual double Health { get; set; }
-    public virtual int Damage{ get; set; }
+    public virtual double Damage{ get; set; }
     public virtual int ExperiencePoints { get; set; }
 
-    public virtual void DisplayEnemy(double currentHealth)
-    {
-        DisplayHealthBar(currentHealth, Health);
-    }
+    public virtual void DisplayEnemy(double currentHealth){}
 
     public virtual string EnemyAttack(Hero dumbusHero, List<Enemy> enemiesList)
     {
