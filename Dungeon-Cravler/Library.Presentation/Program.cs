@@ -172,7 +172,7 @@ double FightIndividualEnemy(Hero hero, Enemy enemy, double heroCurrentHealth)
     do
     {
         var enemyCommand = "";
-        int roundResult = DetermineRoundWinner(hero.HeroAttack(), enemyCommand = enemy.EnemyAttack());
+        int roundResult = DetermineRoundWinner(hero.HeroAttack(ref heroCurrentHealth), enemyCommand = enemy.EnemyAttack());
         switch (roundResult)
         {
             case 1:
@@ -199,9 +199,8 @@ double FightIndividualEnemy(Hero hero, Enemy enemy, double heroCurrentHealth)
                 hero.DisplayHero(heroCurrentHealth);
                 break;
         }
-
+        heroCurrentHealth= hero.CheckAbility(heroCurrentHealth);
     } while (heroCurrentHealth > 0  && enemyCurrentHealth > 0);
-
     return heroCurrentHealth;
 }
 
@@ -213,7 +212,7 @@ int DetermineRoundWinner(string heroCommand, string enemyCommand)
     }
     if ((heroCommand == "direct" && enemyCommand == "side") ||
              (heroCommand == "side" && enemyCommand == "counter") ||
-             (heroCommand == "counter" && enemyCommand == "direct"))
+             (heroCommand == "counter" && enemyCommand == "direct") || heroCommand == "stun") 
     {
         return 2;
     }

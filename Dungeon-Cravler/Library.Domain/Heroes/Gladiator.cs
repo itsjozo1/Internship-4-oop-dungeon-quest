@@ -2,32 +2,46 @@ namespace Library.Domain.Heroes;
 
 public class Gladiator : Hero
 {
-    public string Name {get;}
+    private string Name {get;}
     public override double Health { get; set; } = 100;
     public override int Damage { get; set; } = 20;
-    private bool rage = false;
-    
+    private bool _rage = false;
+    private int _initialDamage = 20;
     public Gladiator(string name)
     {
         Name = name;
     }
 
-    public string Rage()
+    private string Rage(ref double currentHealth)
     {
-        string attackCommand;
-        if (rage == false)
+        if (_rage == false)
         {
-            rage = true;
-            Health *= 0.85;
             Damage *= 2;
-            Console.WriteLine("**RAGE MODE ACTIVATED**");
-            attackCommand = HeroAttack();
-            Damage /= 2;
-            rage = false;
-            return attackCommand;
+            Console.WriteLine($"**RAGE MODE ACTIVATED**\nDamage - {Damage}");
+            currentHealth *= 0.85;
+            DisplayHealthBar(currentHealth, Health);
+            return HeroAttack(ref currentHealth);
+
         }
 
-        return HeroAttack();
+        Console.WriteLine("**RAGE MODE ALREADY ACTIVATED**");
+        return HeroAttack(ref currentHealth);
+    }
+    public override string HeroAttack(ref double currentHealth)
+    {
+        Console.WriteLine("Enter command to attack: ");
+        var enteredAttackCommand = Console.ReadLine();
+        while (!attackCommands.Contains(enteredAttackCommand.ToLower()) && !enteredAttackCommand.Equals("rage"))
+        {
+            Console.WriteLine("Enter one of the commands: "); 
+            enteredAttackCommand = Console.ReadLine();
+        }
+
+        if (enteredAttackCommand.Equals("rage"))
+        {
+            return Rage(ref currentHealth);
+        }
+        return enteredAttackCommand;
     }
     public override string Description()
     {
@@ -44,6 +58,7 @@ public class Gladiator : Hero
     
     public override void DisplayHero(double currentHealth)
     {
+        Damage = _initialDamage;
         Console.WriteLine("    _O_  D\n   / V \\_|\n    /_\\ \n    |#|");
         DisplayHealthBar(currentHealth, Health);
         Console.WriteLine($"Damage: {Damage}");

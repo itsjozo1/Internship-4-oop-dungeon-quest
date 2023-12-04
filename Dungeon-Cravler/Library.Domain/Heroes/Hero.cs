@@ -7,22 +7,23 @@ public class Hero : CharacterFunctions
     public virtual int Damage { get; set; } = 99;
     public int ExpiriencePoints { get; set; }
 
-    public virtual string CheckAbilities()
-    {
-        return HeroAttack();
-    }
+
 
     public virtual string Description()
     {
         return "";
     }
 
+    public virtual double CheckAbility(double currentHealth)
+    {
+        return currentHealth;
+    }
     public virtual void DisplayHero(double currentHealth)
     {
         DisplayExperiencePoints(ExpiriencePoints);
     }
 
-    public virtual string HeroAttack()
+    public virtual string HeroAttack(ref double currentHealth)
     {
         
         Console.WriteLine("Enter command to attack: ");
@@ -36,7 +37,7 @@ public class Hero : CharacterFunctions
         return enteredAttackCommand;
     }
 
-    public void AddExp(int enemyExp)
+    public virtual void AddExp(int enemyExp)
     {
         ExpiriencePoints += enemyExp;
         if (ExpiriencePoints >= 100)

@@ -48,4 +48,26 @@ public class CharacterFunctions
 
         Console.WriteLine($"EXP: {expBar}");
     }
+
+    public void DisplayManaBar(int currentMana, int mana)
+    {
+        string manaBar = "";
+        for (var i = 1; i < 11; i++)
+        {
+            if (i <= currentMana*10/mana)
+            {
+                manaBar += "#";
+            }
+            if (i > currentMana*10/mana)
+            {
+                manaBar += "-";
+            }
+            if (i == 5)
+            {
+                manaBar += $" {currentMana} ";
+            }
+        }
+
+        Console.WriteLine($"Mana: {manaBar}");
+    }
 }
